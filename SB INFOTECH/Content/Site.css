@@ -1,0 +1,16 @@
+﻿.dropdown {
+    position: absolute;
+    right: 0;
+    top: 3.5rem;
+    z-index: 10;
+}
+
+ul li:hover {
+    background-color: green;
+    font-weight: 400;
+    opacity: 120%;
+}
+
+.sb-bg {
+    background-color: #22a5ff;
+}
