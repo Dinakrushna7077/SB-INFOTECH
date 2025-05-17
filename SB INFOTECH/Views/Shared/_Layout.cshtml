@@ -7,10 +7,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="~/Content/Site.css" />
-    
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark sb-bg position-sticky top-0" data-mdb-animation-on-scroll="repeat">
+    <nav class="shadow-lg nv navbar navbar-expand-sm navbar-toggleable-sm navbar-dark sb-bg position-sticky top-0" data-mdb-animation-on-scroll="repeat">
         <div class="container">
             @Html.ActionLink("SB INFOTECH", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <button id="btn" type="button" class="navbar-toggler" data-bs-toggle="collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
@@ -19,16 +18,16 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1 mynav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li><a class="nav-link" href="@Url.Action("Index","Home")#home">Home</a></li>
+                    <li><a class="nav-link" href="@Url.Action("Index","Home")#about">About</a></li>
+                    <li><a class="nav-link" href="@Url.Action("Index","Home")#contact">Contact</a></li>
                 </ul>
             </div>
-            <div class="d-none d-lg-none d-md-none my-nav" id="drdn">
+            <div class="d-none d-lg-none d-md-none mynav" id="drdn">
                 <ul class="d-flex flex-column sb-bg navbar-nav text-white">
-                    <li class="px-2">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="px-2">@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="px-2">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="px-2"><a class="nav-link" href="@Url.Action("Index","Home")#home">Home</a></li>
+                    <li class="px-2"><a class="nav-link" href="@Url.Action("Index","Home")#about">About</a></li>
+                    <li class="px-2"><a class="nav-link" href="@Url.Action("Index","Home")#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -65,8 +64,6 @@
                             <li><a href="#">Home</a></li>
                             <li><a href="#">About us</a></li>
                             <li><a href="#">Services</a></li>
-                            <li><a href="#">Terms of service</a></li>
-                            <li><a href="#">Privacy policy</a></li>
                         </ul>
                     </div>
 
@@ -102,5 +99,6 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/Script.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>
