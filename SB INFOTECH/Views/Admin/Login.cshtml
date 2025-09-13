@@ -1,0 +1,37 @@
+﻿@model SB_INFOTECH.Models.Admin_mst
+@{
+    ViewBag.Title = "Admin Login";
+}
+<style>
+    .form-container{
+        height:35rem;
+    }
+    .login{
+        border-bottom:0.9px dashed white;
+    }
+</style>
+@Html.Raw(TempData["Msg"])
+<div class="d-flex w-100 align-items-center justify-content-center form-container">
+    @using (Html.BeginForm("Login", "Admin", "POST"))
+    {
+        <div class="d-flex flex-column gap-3 p-3 sb-bg  rounded-1">
+            <h3 class="text-center py-3"><i class="fa-solid fa-circle-user fs-1 text-white-50"></i></h3>
+            <div class="d-flex gap-2">
+                <div class="d-flex flex-column gap-4">
+                    <div>Gmail</div>
+                    <div>Mobile</div>
+                    <div>Password</div>
+                </div>
+                <div class="d-flex flex-column gap-2">
+                    <div>@Html.TextBoxFor(m=>m.Gmail, new {@class="form-control"})</div>
+                    <div>@Html.TextBoxFor(m=>m.Mobile, new { @class = "form-control" })</div>
+                    <div>@Html.TextBoxFor(m=>m.Password , new { @class = "form-control" })</div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-light">Login</button>
+            </div>
+        </div>
+    }
+</div>
+

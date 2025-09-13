@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SB_InfotechModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin_mst">
+          <Key>
+            <PropertyRef Name="A_ID" />
+          </Key>
+          <Property Name="A_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gmail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Mobile" Type="bigint" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="FunctionImages">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FunctionID" Type="int" />
+          <Property Name="Image" Type="nvarchar" MaxLength="255" />
+          <Property Name="UploadedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Functions">
+          <Key>
+            <PropertyRef Name="FunctionID" />
+          </Key>
+          <Property Name="FunctionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="FunctionDate" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__FunctionI__Funct__398D8EEE">
+          <End Role="Functions" Type="Self.Functions" Multiplicity="0..1" />
+          <End Role="FunctionImages" Type="Self.FunctionImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Functions">
+              <PropertyRef Name="FunctionID" />
+            </Principal>
+            <Dependent Role="FunctionImages">
+              <PropertyRef Name="FunctionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SB_InfotechModelStoreContainer">
+          <EntitySet Name="Admin_mst" EntityType="Self.Admin_mst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FunctionImages" EntityType="Self.FunctionImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Functions" EntityType="Self.Functions" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__FunctionI__Funct__398D8EEE" Association="Self.FK__FunctionI__Funct__398D8EEE">
+            <End Role="Functions" EntitySet="Functions" />
+            <End Role="FunctionImages" EntitySet="FunctionImages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SB_InfotechModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SB_InfotechEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="FunctionImages" EntityType="SB_InfotechModel.FunctionImage" />
+          <EntitySet Name="Functions" EntityType="SB_InfotechModel.Function" />
+          <AssociationSet Name="FK__FunctionI__Funct__398D8EEE" Association="SB_InfotechModel.FK__FunctionI__Funct__398D8EEE">
+            <End Role="Function" EntitySet="Functions" />
+            <End Role="FunctionImage" EntitySet="FunctionImages" />
+          </AssociationSet>
+          <EntitySet Name="Admin_mst" EntityType="SB_InfotechModel.Admin_mst" />
+        </EntityContainer>
+        <EntityType Name="FunctionImage">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FunctionID" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UploadedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Function" Relationship="SB_InfotechModel.FK__FunctionI__Funct__398D8EEE" FromRole="FunctionImage" ToRole="Function" />
+        </EntityType>
+        <EntityType Name="Function">
+          <Key>
+            <PropertyRef Name="FunctionID" />
+          </Key>
+          <Property Name="FunctionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FunctionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="FunctionImages" Relationship="SB_InfotechModel.FK__FunctionI__Funct__398D8EEE" FromRole="Function" ToRole="FunctionImage" />
+        </EntityType>
+        <Association Name="FK__FunctionI__Funct__398D8EEE">
+          <End Type="SB_InfotechModel.Function" Role="Function" Multiplicity="0..1" />
+          <End Type="SB_InfotechModel.FunctionImage" Role="FunctionImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="FunctionID" />
+            </Principal>
+            <Dependent Role="FunctionImage">
+              <PropertyRef Name="FunctionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Admin_mst">
+          <Key>
+            <PropertyRef Name="A_ID" />
+          </Key>
+          <Property Name="A_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gmail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="Int64" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SB_InfotechModelStoreContainer" CdmEntityContainer="SB_InfotechEntities" >
+          <EntitySetMapping Name="FunctionImages">
+            <EntityTypeMapping TypeName="SB_InfotechModel.FunctionImage">
+              <MappingFragment StoreEntitySet="FunctionImages">
+                <ScalarProperty Name="UploadedDate" ColumnName="UploadedDate" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="FunctionID" ColumnName="FunctionID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Functions">
+            <EntityTypeMapping TypeName="SB_InfotechModel.Function">
+              <MappingFragment StoreEntitySet="Functions">
+                <ScalarProperty Name="FunctionDate" ColumnName="FunctionDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FunctionID" ColumnName="FunctionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin_mst">
+            <EntityTypeMapping TypeName="SB_InfotechModel.Admin_mst">
+              <MappingFragment StoreEntitySet="Admin_mst">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Gmail" ColumnName="Gmail" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="A_ID" ColumnName="A_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
