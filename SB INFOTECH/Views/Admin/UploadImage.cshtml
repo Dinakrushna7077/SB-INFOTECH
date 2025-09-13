@@ -1,0 +1,17 @@
+﻿@using SB_INFOTECH.Models
+@model FunctionImage
+@{
+    ViewBag.Title = "UploadImage";
+}
+
+<h2>UploadImage</h2>
+
+<div class="container">
+    @using (Html.BeginForm("UploadImage", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <div>Select Function @Html.DropDownListFor(x => x.FunctionID, ViewBag.Function as SelectList, "--Select--", new { @id = "fn" })</div>
+        <input type="file" name="files" multiple />
+        <button type="submit">Upload</button>
+    }
+</div>

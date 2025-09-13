@@ -7,11 +7,13 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="~/Content/Site.css" />
+    <link rel="icon" href="~/Assets/sb-infotech-logo.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <nav class="shadow-lg nv navbar navbar-expand-sm navbar-toggleable-sm navbar-dark sb-bg position-sticky top-0" data-mdb-animation-on-scroll="repeat">
         <div class="container">
-            @Html.ActionLink("SB INFOTECH", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("SB INFOTECH", "Index", "Home", new { area = "" }, new { @class = "navbar-brand fw-bold" })
             <button id="btn" type="button" class="navbar-toggler" data-bs-toggle="collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -21,6 +23,7 @@
                     <li><a class="nav-link" href="@Url.Action("Index","Home")#home">Home</a></li>
                     <li><a class="nav-link" href="@Url.Action("Index","Home")#about">About</a></li>
                     <li><a class="nav-link" href="@Url.Action("Index","Home")#contact">Contact</a></li>
+                    <li><a class="nav-link" href="@Url.Action("Gallery","Home")">Gallery</a></li>
                 </ul>
             </div>
             <div class="d-none d-lg-none d-md-none mynav" id="drdn">
@@ -28,6 +31,7 @@
                     <li class="px-2"><a class="nav-link" href="@Url.Action("Index","Home")#home">Home</a></li>
                     <li class="px-2"><a class="nav-link" href="@Url.Action("Index","Home")#about">About</a></li>
                     <li class="px-2"><a class="nav-link" href="@Url.Action("Index","Home")#contact">Contact</a></li>
+                    <li class="px-2"><a class="nav-link" href="@Url.Action("Gallery","Home")">Gallery</a></li>
                 </ul>
             </div>
         </div>
